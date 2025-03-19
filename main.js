@@ -5,7 +5,7 @@ class ChooseEnemyScene extends Phaser.Scene {
 
     preload() {
         // Carrega as imagens das presas e do fundo
-        this.load.image('presa1', '../assets/presa1.png');
+        this.load.image('presa1', 'assets/presa1.png');
         this.load.image('presa2', 'assets/presa2.png');
         this.load.image('presa3', 'assets/presa3.png');
         this.load.image('background1', 'assets/background1.png');
