@@ -54,7 +54,7 @@ class TutorialScene extends Phaser.Scene {
 
     preload() {
         // Carrega a imagem de fundo
-        this.load.image('background2', './assets/fundo1.png');
+        this.load.image('background2', 'assets/fundo1.png');
     }
 
     create() {
@@ -121,8 +121,8 @@ class GameScene extends Phaser.Scene {
 
     preload() {
         // Carrega as imagens de fundo e da plataforma
-        this.load.image('background3', './assets/fundo1.png');
-        this.load.image('platform', './assets/plataforma.png');
+        this.load.image('background3', 'assets/fundo1.png');
+        this.load.image('platform', 'assets/plataforma.png');
     }
 
     create() {
@@ -346,8 +346,8 @@ class GameOverScene extends Phaser.Scene {
 
     preload() {
         // Carrega as imagens de fundo e do botão de reiniciar
-        this.load.image('background4', './assets/fundo1.png');
-        this.load.image('botão1', './assets/botão.png');
+        this.load.image('background4', 'assets/fundo1.png');
+        this.load.image('botão1', 'assets/botão.png');
     }
 
     create(data) {
@@ -406,8 +406,8 @@ class WinScene extends Phaser.Scene {
 
     preload() {
         // Carrega as imagens de fundo e do botão de reiniciar
-        this.load.image('background5', './assets/fundo1.png');
-        this.load.image('botão1', './assets/botão.png');
+        this.load.image('background5', 'assets/fundo1.png');
+        this.load.image('botão1', 'assets/botão.png');
     }
 
     create(data) {
