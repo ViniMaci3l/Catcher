@@ -1,14 +1,15 @@
+
 class ChooseEnemyScene extends Phaser.Scene {
     constructor() {
         super({ key: 'ChooseEnemyScene' });
     }
 
     preload() {
-        // Ajuste dos caminhos das imagens
-        this.load.image('presa1', 'assets/presa1.png');
-        this.load.image('presa2', 'assets/presa2.png');
-        this.load.image('presa3', 'assets/presa3.png');
-        this.load.image('background1', 'assets/background1.png');
+        // Ajuste dos caminhos das imagens para funcionar no GitHub Pages
+        this.load.image('presa1', './assets/presa1.png');
+        this.load.image('presa2', './assets/presa2.png');
+        this.load.image('presa3', './assets/presa3.png');
+        this.load.image('background1', './assets/background1.png');
     }
 
     create() {
@@ -50,7 +51,7 @@ class TutorialScene extends Phaser.Scene {
 
     preload() {
         // Ajuste do caminho da imagem de fundo
-        this.load.image('background2', 'assets/background2.png');
+        this.load.image('background2', './assets/background2.png');
     }
 
     create() {
@@ -113,8 +114,8 @@ class GameScene extends Phaser.Scene {
 
     preload() {
         // Ajuste dos caminhos das imagens
-        this.load.image('background3', 'assets/background2.png');
-        this.load.image('platform', 'assets/platform.png');
+        this.load.image('background3', './assets/background2.png');
+        this.load.image('platform', './assets/platform.png');
     }
 
     create() {
@@ -320,8 +321,8 @@ class GameOverScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('background4', 'assets/background2.png');
-        this.load.image('botão1', 'assets/botão1.png');
+        this.load.image('background4', './assets/background2.png');
+        this.load.image('botão1', './assets/botão1.png');
     }
 
     create(data) {
@@ -370,8 +371,8 @@ class WinScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('background5', 'assets/background2.png');
-        this.load.image('botão1', 'assets/botão1.png');
+        this.load.image('background5', './assets/background2.png');
+        this.load.image('botão1', './assets/botão1.png');
     }
 
     create(data) {
