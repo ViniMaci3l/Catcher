@@ -188,14 +188,14 @@ class GameScene extends Phaser.Scene {
     }
 
     endGame() {
-        // // Obtém o recorde máximo armazenado no localStorage
-        // let maxScore = localStorage.getItem('maxScore') || 0;
+        // Obtém o recorde máximo armazenado no localStorage
+        let maxScore = localStorage.getItem('maxScore') || 0;
 
-        // // Atualiza o recorde se necessário
-        // if (this.score > maxScore) {
-        //     maxScore = this.score;
-        //     localStorage.setItem('maxScore', maxScore);
-        // }
+        // Atualiza o recorde se necessário
+        if (this.score > maxScore) {
+            maxScore = this.score;
+            localStorage.setItem('maxScore', maxScore);
+        }
 
         // Decide se o jogador venceu ou perdeu
         if (this.score >= 60) {
