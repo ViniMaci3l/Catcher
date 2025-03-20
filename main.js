@@ -6,10 +6,10 @@ class ChooseEnemyScene extends Phaser.Scene {
 
     preload() {
         // Ajuste dos caminhos das imagens para funcionar no GitHub Pages
-        this.load.image('presa1', '/assets/presa1.png');
-        this.load.image('presa2', '/assets/presa2.png');
-        this.load.image('presa3', '/assets/presa3.png');
-        this.load.image('background1', '/assets/background1.png');
+        this.load.image('presa1', 'Catcher/assets/presa1.png');
+        this.load.image('presa2', 'Catcher/assets/presa2.png');
+        this.load.image('presa3', 'Catcher/assets/presa3.png');
+        this.load.image('background1', 'Catcher/assets/background1.png');
     }
 
     create() {
