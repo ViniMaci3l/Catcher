@@ -1,6 +1,6 @@
 class ChooseEnemyScene extends Phaser.Scene {
     constructor() {
-        super({ key: 'ChooseEnemyScene' }); // Define a chave da cena
+        super({ key: 'ChooseEnemyScene' });
     }
 
     preload() {
@@ -21,10 +21,10 @@ class ChooseEnemyScene extends Phaser.Scene {
 
         // Cria botões interativos para escolher a presa
         const enemy1 = this.add.image(550, 450, 'presa1')
-            .setInteractive() // Torna a imagem interativa
-            .on('pointerdown', () => this.startGame('presa1')) // Inicia o jogo com a presa 1
-            .on('pointerover', () => enemy1.setScale(1.1)) // Aumenta a escala ao passar o mouse
-            .on('pointerout', () => enemy1.setScale(1)); // Volta à escala original ao tirar o mouse
+            .setInteractive()
+            .on('pointerdown', () => this.startGame('presa1'))
+            .on('pointerover', () => enemy1.setScale(1.1))
+            .on('pointerout', () => enemy1.setScale(1));
 
         const enemy2 = this.add.image(900, 450, 'presa2')
             .setInteractive()
@@ -48,7 +48,7 @@ class ChooseEnemyScene extends Phaser.Scene {
 
 class TutorialScene extends Phaser.Scene {
     constructor() {
-        super({ key: 'TutorialScene' }); // Define a chave da cena
+        super({ key: 'TutorialScene' });
     }
 
     preload() {
@@ -67,12 +67,12 @@ class TutorialScene extends Phaser.Scene {
         // Exibe textos explicativos sobre as regras do jogo
         this.add.text(this.cameras.main.centerX, 100, 'Bem-vindo ao Catcher!', { 
             fontSize: '50px', 
-            fill: '#fff' // Cor branca
-        }).setOrigin(0.5); // Centraliza o texto
+            fill: '#fff'
+        }).setOrigin(0.5);
 
         this.add.text(this.cameras.main.centerX, 200, 'Regras', { 
             fontSize: '24px', 
-            fill: '#ff0' // Cor amarela
+            fill: '#ff0'
         }).setOrigin(0.5);
 
         this.add.text(this.cameras.main.centerX, 250, 'Você tem 30 segundos para capturar o máximo de presas', { 
@@ -90,19 +90,19 @@ class TutorialScene extends Phaser.Scene {
             fill: '#fff'
         }).setOrigin(0.5);
 
-        this.add.text(this.cameras.main.centerX, 400, 'Clique nas presas com o botão esquerdo do mouse ou do touch pad para capturalas ', { 
+        this.add.text(this.cameras.main.centerX, 400, 'Clique nas presas com o botão esquerdo do mouse ou do touch pad para capturá-las', { 
             fontSize: '24px', 
             fill: '#fff'
         }).setOrigin(0.5);
 
-        this.add.text(this.cameras.main.centerX, 450, 'Ao capturar 15 presas e precionar o espaço no seu teclado vai poder parar o tempo por 3 segundos ', { 
+        this.add.text(this.cameras.main.centerX, 450, 'Ao capturar 15 presas e pressionar o espaço no seu teclado, você pode parar o tempo por 3 segundos', { 
             fontSize: '24px', 
             fill: '#fff'
         }).setOrigin(0.5);
 
         this.add.text(this.cameras.main.centerX, 500, 'Clique em qualquer lugar para começar', { 
             fontSize: '24px', 
-            fill: '#0f0' // Cor verde
+            fill: '#0f0'
         }).setOrigin(0.5);
 
         // Inicia o jogo ao clicar em qualquer lugar da tela
@@ -114,7 +114,7 @@ class TutorialScene extends Phaser.Scene {
 
 class GameScene extends Phaser.Scene {
     constructor() {
-        super({ key: 'GameScene' }); // Define a chave da cena
+        super({ key: 'GameScene' });
     }
 
     preload() {
@@ -132,12 +132,12 @@ class GameScene extends Phaser.Scene {
         ).setDisplaySize(this.cameras.main.width, this.cameras.main.height);
 
         // Configurações iniciais
-        this.score = 0; // Pontuação do jogador
-        this.timeLeft = 30; // Tempo restante
-        this.enemyType = this.registry.get('enemyType'); // Tipo de presa escolhida
-        this.isTimePaused = false; // Controla se o tempo está pausado
-        this.canPauseTime = false; // Controla se o jogador pode pausar o tempo
-        this.nextPauseThreshold = 15; // Próximo limite de presas para ativar a pausa
+        this.score = 0;
+        this.timeLeft = 30;
+        this.enemyType = this.registry.get('enemyType');
+        this.isTimePaused = false;
+        this.canPauseTime = false;
+        this.nextPauseThreshold = 15;
 
         // Placar
         this.scoreText = this.add.text(
@@ -145,7 +145,7 @@ class GameScene extends Phaser.Scene {
             16,
             'Presas: 0', 
             { fontSize: '32px', fill: '#fff' }
-        ).setOrigin(0.5, 0); // Centraliza o texto horizontalmente
+        ).setOrigin(0.5, 0);
 
         // Temporizador
         this.timerText = this.add.text(
@@ -161,7 +161,7 @@ class GameScene extends Phaser.Scene {
             120,
             '', 
             { fontSize: '32px', fill: '#0f0' }
-        ).setOrigin(0.5, 0).setVisible(false); // Inicialmente invisível
+        ).setOrigin(0.5, 0).setVisible(false);
 
         // Texto "FREEZE"
         this.freezeText = this.add.text(
@@ -169,7 +169,7 @@ class GameScene extends Phaser.Scene {
             this.cameras.main.centerY,
             'FREEZE', 
             { fontSize: '64px', fill: '#00f', fontStyle: 'bold' }
-        ).setOrigin(0.5).setVisible(false); // Inicialmente invisível
+        ).setOrigin(0.5).setVisible(false);
 
         // Adiciona plataformas
         this.platforms = this.physics.add.staticGroup();
@@ -189,18 +189,18 @@ class GameScene extends Phaser.Scene {
 
         // Evento para adicionar presas
         this.enemySpawnEvent = this.time.addEvent({
-            delay: 200, // Intervalo de 200ms
+            delay: 200,
             callback: this.addEnemy,
             callbackScope: this,
-            loop: true // Repete indefinidamente
+            loop: true
         });
 
         // Atualiza o temporizador
         this.time.addEvent({
-            delay: 1000, // Intervalo de 1 segundo
+            delay: 1000,
             callback: this.updateTimer,
             callbackScope: this,
-            loop: true // Repete indefinidamente
+            loop: true
         });
 
         // Configura colisão entre presas e plataformas
@@ -211,7 +211,7 @@ class GameScene extends Phaser.Scene {
     }
 
     addEnemy() {
-        if (this.isTimePaused) return; // Não adiciona presas se o tempo estiver pausado
+        if (this.isTimePaused) return;
 
         // Adiciona uma nova presa com posição e velocidade aleatórias
         const enemy = this.enemies.create(
@@ -222,8 +222,8 @@ class GameScene extends Phaser.Scene {
 
         // Define uma velocidade aleatória para a presa
         enemy.setVelocity(
-            Phaser.Math.Between(-500, 500), // Velocidade X aleatória
-            Phaser.Math.Between(-500, 500) // Velocidade Y aleatória
+            Phaser.Math.Between(-500, 500),
+            Phaser.Math.Between(-500, 500)
         );
 
         // Torna a presa clicável
@@ -234,7 +234,7 @@ class GameScene extends Phaser.Scene {
     }
 
     catchEnemy(enemy) {
-        if (!enemy.active) return; // Verifica se o inimigo ainda está ativo
+        if (!enemy.active) return;
 
         // Remove a presa
         enemy.destroy();
@@ -245,8 +245,8 @@ class GameScene extends Phaser.Scene {
 
         // Verifica se o jogador pode pausar o tempo
         if (this.score >= this.nextPauseThreshold && !this.canPauseTime) {
-            this.canPauseTime = true; // Habilita o poder de pausar o tempo
-            this.pauseText.setText('Poder de parar o tempo pronto!').setVisible(true); // Exibe feedback visual
+            this.canPauseTime = true;
+            this.pauseText.setText('Poder de parar o tempo pronto!').setVisible(true);
 
             // Oculta o texto após 3 segundos
             this.time.addEvent({
@@ -260,7 +260,7 @@ class GameScene extends Phaser.Scene {
     }
 
     updateTimer() {
-        if (this.isTimePaused) return; // Não decrementa o tempo se estiver pausado
+        if (this.isTimePaused) return;
 
         // Decrementa o tempo restante
         this.timeLeft--;
@@ -273,32 +273,32 @@ class GameScene extends Phaser.Scene {
     }
 
     pauseTime() {
-        if (this.isTimePaused || !this.canPauseTime) return; // Evita múltiplas pausas ou pausas sem poder
+        if (this.isTimePaused || !this.canPauseTime) return;
 
-        this.isTimePaused = true; // Pausa o tempo
-        this.canPauseTime = false; // Desabilita o poder até atingir o próximo limite
-        this.freezeText.setVisible(true); // Exibe o texto "FREEZE"
+        this.isTimePaused = true;
+        this.canPauseTime = false;
+        this.freezeText.setVisible(true);
 
         // Pausa o evento de geração de presas
         this.enemySpawnEvent.paused = true;
 
         // Congela todas as presas
         this.enemies.getChildren().forEach(enemy => {
-            enemy.setVelocity(0, 0); // Para o movimento das presas
+            enemy.setVelocity(0, 0);
         });
 
         // Retoma o tempo após 5 segundos
         this.time.addEvent({
-            delay: 5000, // 5 segundos
+            delay: 5000,
             callback: () => {
-                this.isTimePaused = false; // Retoma o tempo
-                this.freezeText.setVisible(false); // Oculta o texto "FREEZE"
+                this.isTimePaused = false;
+                this.freezeText.setVisible(false);
 
                 // Retoma o movimento das presas
                 this.enemies.getChildren().forEach(enemy => {
                     enemy.setVelocity(
-                        Phaser.Math.Between(-500, 500), // Velocidade X aleatória
-                        Phaser.Math.Between(-500, 500) // Velocidade Y aleatória
+                        Phaser.Math.Between(-500, 500),
+                        Phaser.Math.Between(-500, 500)
                     );
                 });
 
@@ -322,13 +322,13 @@ class GameScene extends Phaser.Scene {
     endGame() {
         // Recupera a pontuação máxima do localStorage
         let maxScore = localStorage.getItem('maxScore') || 0;
-    
+
         // Verifica se a pontuação atual é maior que a pontuação máxima
         if (this.score > maxScore) {
-            maxScore = this.score; // Atualiza a pontuação máxima
-            localStorage.setItem('maxScore', maxScore); // Salva no localStorage
+            maxScore = this.score;
+            localStorage.setItem('maxScore', maxScore);
         }
-    
+
         // Passa a pontuação atual e máxima para as cenas de Game Over ou Vitória
         if (this.score >= 60) {
             this.scene.start('WinScene', { score: this.score, maxScore: maxScore });
@@ -339,8 +339,8 @@ class GameScene extends Phaser.Scene {
 
     enemyHitPlatform(enemy, platform) {
         // Define uma nova velocidade aleatória para a presa
-        const newVelocityX = Phaser.Math.Between(-500, 500); // Velocidade X aleatória
-        const newVelocityY = Phaser.Math.Between(-500, 500); // Velocidade Y aleatória
+        const newVelocityX = Phaser.Math.Between(-500, 500);
+        const newVelocityY = Phaser.Math.Between(-500, 500);
 
         // Aplica a nova velocidade à presa
         enemy.setVelocity(newVelocityX, newVelocityY);
@@ -401,17 +401,17 @@ class GameOverScene extends Phaser.Scene {
 
         // Configura o evento de clique no botão
         restartButton.on('pointerdown', () => {
-            this.scene.start('ChooseEnemyScene'); // Reinicia o jogo
+            this.scene.start('ChooseEnemyScene');
         });
 
         // Efeito ao passar o mouse sobre o botão
         restartButton.on('pointerover', () => {
-            restartButton.setScale(1.1); // Aumenta o tamanho do botão
+            restartButton.setScale(1.1);
         });
 
         // Efeito ao tirar o mouse do botão
         restartButton.on('pointerout', () => {
-            restartButton.setScale(1); // Volta ao tamanho original
+            restartButton.setScale(1);
         });
     }
 }
@@ -460,30 +460,30 @@ class WinScene extends Phaser.Scene {
 
         // Configura o evento de clique no botão
         restartButton.on('pointerdown', () => {
-            this.scene.start('ChooseEnemyScene'); // Reinicia o jogo
+            this.scene.start('ChooseEnemyScene');
         });
 
         // Efeito ao passar o mouse sobre o botão
         restartButton.on('pointerover', () => {
-            restartButton.setScale(1.1); // Aumenta o tamanho do botão
+            restartButton.setScale(1.1);
         });
 
         // Efeito ao tirar o mouse do botão
         restartButton.on('pointerout', () => {
-            restartButton.setScale(1); // Volta ao tamanho original
+            restartButton.setScale(1);
         });
     }
 }
 
 // Configuração do Phaser
 const config = {
-    type: Phaser.AUTO, // Renderização automática (WebGL ou Canvas)
-    width: 1835, // Largura da tela
-    height: 1000, // Altura da tela
-    scene: [ChooseEnemyScene, TutorialScene, GameScene, GameOverScene, WinScene], // Cenas do jogo
+    type: Phaser.AUTO,
+    width: 1835,
+    height: 1000,
+    scene: [ChooseEnemyScene, TutorialScene, GameScene, GameOverScene, WinScene],
     physics: {
-        default: 'arcade', // Usa física arcade
-        arcade: { debug: false } // Desativa o modo de depuração
+        default: 'arcade',
+        arcade: { debug: false }
     }
 };
 
